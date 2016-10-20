@@ -1,0 +1,170 @@
+﻿<!DOCTYPE htm;>
+<html>
+	<head> 
+		<style>
+			.main{
+				width:400px;
+				height:400px;
+				background:gray;
+				position:relative;
+				margin:0 auto;
+				overflow:hidden;
+			}
+			.contain{
+				width:100%;
+				height:400px;
+				position:relative;
+				top:-100px;
+			}
+			.row{
+				width:100%;
+				height:100px;
+			}
+			.cell{
+				width:100px;
+				height:100px;
+				float:left;
+			}
+			.black{
+				background:red;
+			}
+			#score{
+				text-align:center;
+			}
+		</style>
+	</head>
+	<body>
+		<h1 id="score">0</h1>
+		<div class="main">
+			<div class="contain" id="contain"></div>
+		</div>
+	</body>
+	<script>
+	
+		var clock = null;
+		
+		//游戏的状态:0初始化;1进行中;2暂停;3失败结束
+		var state = 0;
+		
+		var speed = 20;
+		
+		//创建DIVcell
+		function createCell(paramClassName){
+			var div = document.createElement('div');
+			div.className=paramClassName;
+			return div;
+		}
+		
+		//创建DIVrow
+		function createRow(){
+			var row = createCell('row');
+			var classArr = createRandomArr();
+			for(var i = 0; i < 4; i++){
+				row.appendChild(createCell(classArr[i]));
+			}
+			//判断有无第一行，如果没有则添加，有的话在第一个元素前添加
+			if($('contain').firstChild == null){
+				$('contain').appendChild(row);
+			}else{
+				$('contain').insertBefore(row, $('contain').firstChild);
+			}
+		}
+		
+		//根据id获取元素
+		function $(id){
+			return document.getElementById(id);
+		}
+		
+		//返回一个数组，其中一个是cell black 其他为cell
+		function createRandomArr(){
+			//black作为可点区域
+			var arr=['cell','cell','cell','cell'];
+			var index = Math.floor(Math.random()*4);
+			arr[index] = 'cell black';
+			return arr;
+		}
+		
+		//初期化
+		function init(){
+			for(var i = 0; i < 4; i++){
+				//创建行
+				createRow();
+			}
+			
+			//添加点击效果
+			$('contain').onclick = function(e){
+				if(!(state == 3)){
+					if(e.target.className.indexOf('black') == -1){
+						//点击红块结束游戏
+						fail();
+					}else{
+						e.target.className = 'cell';
+						//如果点击红块后，将其父元素增加一个pass属性为1
+						e.target.parentNode.pass = 1;
+						scoreSum();
+					}
+				}else{
+					alert('请重新开始');
+					return;
+				}
+			}
+		}
+		
+		//动画
+		function move(){
+			var contain = $('contain')
+			//获取contain元素的top值
+			var top = contain.offsetTop;
+			top += 2;
+			contain.style.top = top + 'px';
+			if(top == 0){
+				createRow();
+				//将top回复成100
+				contain.style.top = '-100px';
+				delRow();
+			}else if(top <= -94){
+				//滑块超出容器5像素
+				
+				//最后一行的pass值不等于1且容器包含5个滑块时
+				var rows = contain.childNodes;
+				if(rows[rows.length - 1].pass !== 1&&rows.length == 5){
+					//白块落地游戏结束
+					fail();
+				}
+			}
+		}
+		
+		//定时器
+		function startTime(){
+			//将定时器赋给clock
+			clock = window.setInterval('move()',speed);
+		}
+		
+		//去除最后一行元素
+		function delRow(){
+			// 空白行的解决方案
+			if($('contain').childNodes.length == 6){
+				$('contain').removeChild($('contain').lastChild);
+			}
+		}
+		
+		//计分
+		function scoreSum(){
+			var score = parseInt($('score').innerHTML)
+			$('score').innerHTML = score + 1;
+			if(score % 2 == 0){
+				speed += 2;
+			}
+		}
+		
+		//结束方法
+		function fail(){
+			//清空计时器
+			clearInterval(clock);
+			state = 3;
+			alert('结束');
+		}
+		init();
+		startTime();
+	</script>
+</html>

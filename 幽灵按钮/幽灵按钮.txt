@@ -1,0 +1,11 @@
+一、概述
+	1、所需技术
+		CSS3的2D转换：tranform
+			rotate旋转给定的角度、scale将元素尺寸增加或缩小
+		CSS3过渡效果：transition
+		CSS定位：position
+			left、right、top、bottom
+	2、步骤
+		页面布局、添加图片并加入过渡效果、设置按钮的过渡效果、设置顶部和底部线条动画效果、设置左部和右部线条动画效果、优化及响应式布局
+二、页面布局
+	

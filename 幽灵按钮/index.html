@@ -1,0 +1,181 @@
+﻿<!DOCTYPE htm;>
+<html>
+	<head>
+		<style>
+
+			body{
+				background-color:red;
+			}
+			.content{
+				background-color:blue;
+				width:1000px;
+				height:400px;
+				margin:50px auto;
+			}
+			.content .boxOne{
+				background-color:gray;
+				width:205px;
+				height:220px;
+				float:left;
+				margin:0px 55px;
+			}
+			.boxOne .icon{
+				background-color:pink;
+				width:115px;
+				height:115px;
+				display:block;
+				margin:0px auto;
+				transition:all 0.2s;
+				
+				-webkit-transition:all 0.2s;
+				-o-transition:all 0.2s;
+				-moz-transition:all 0.2s;
+			}
+			.boxOne .icon:hover{
+				transform:scale(1.2) rotate(360deg);
+				
+				-webkit-transform:scale(1.2) rotate(360deg);
+				-o-transform:scale(1.2) rotate(360deg);
+				-moz-transform:scale(1.2) rotate(360deg);
+			}
+			.boxOne .clickBtn{
+				background-color:url(/1.jpg) no-repeat 130px center;
+				width:115px;
+				height:45px;
+				margin:0px auto;
+				font-family:"微软雅黑";
+				font-size:18px;
+				font-weight:bolder;
+				color:black;
+				display:block;
+				text-decoration:none;
+				line-height:45px;
+				border:1px solid #fff;
+				position:relative;
+				transition:all 0.2s;
+				
+				-webkit-transition:all 0.2s;
+				-o-transition:all 0.2s;
+				-moz-transition:all 0.2s;
+			}
+			.boxOne .clickBtn:hover{
+				background-position:1140px center;
+				border: 2px solid #fff;
+			}
+			.clickBtn .line-top{
+				background-color:red;
+				width:0px;
+				height:2px;
+				display:block;
+				position:absolute;
+				top:0px;
+				left:-100%;
+				transition:all 0.2s ease;
+				
+				-webkit-transition:all 0.2s ease;
+				-o-transition:all 0.2s ease;
+				-moz-transition:all 0.2s ease;
+			}
+			.clickBtn:hover .line-top{
+				width:115px;
+				left:0px;
+			}
+			.boxOne .line-right{
+				background-color:red;
+				width:2px;
+				height:0px;
+				display:block;
+				position:absolute;
+				right:0px;
+				bottom:-100%;
+				transition:all 0.2s ease;
+				
+				-webkit-transition:all 0.2s ease;
+				-o-transition:all 0.2s ease;
+				-moz-transition:all 0.2s ease;
+			}
+			.clickBtn:hover .line-right{
+				height:45px;
+				bottom:0px;
+			}
+			.boxOne .line-left{
+				background-color:red;
+				width:2px;
+				height:0px;
+				display:block;
+				position:absolute;
+				left:0px;
+				top:-100%;
+				transition:all 0.2s ease;
+				
+				-webkit-transition:all 0.2s ease;
+				-o-transition:all 0.2s ease;
+				-moz-transition:all 0.2s ease;
+			}
+			.clickBtn:hover .line-left{
+				height:45px;
+				top:0px;
+			}
+			.boxOne .line-bottom{
+				background-color:red;
+				width:0px;
+				height:2px;
+				display:block;
+				position:absolute;
+				bottom:0px;
+				right:-100%;
+				transition:all 0.2s ease;
+				
+				-webkit-transition:all 0.2s ease;
+				-o-transition:all 0.2s ease;
+				-moz-transition:all 0.2s ease;
+			}
+			.clickBtn:hover .line-bottom{
+				width:115px;
+				right:-2px;
+			}
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="content">
+			<div class="boxOne">
+				<span class="icon">
+					123
+				</span>
+				<a href="#" class="clickBtn"> 
+					<span class="line-top"></span>
+					<span class="line-right"></span>
+					<span class="line-bottom"></span>
+					<span class="line-left"></span>
+					MISSION1
+				</a>
+			</div>
+			<div class="boxOne">
+				<span class="icon">
+					456
+				</span>
+				<a href="#" class="clickBtn"> 
+					<span class="line-top"></span>
+					<span class="line-right"></span>
+					<span class="line-bottom"></span>
+					<span class="line-left"></span>
+					MISSION2
+				</a>
+			</div>
+			<div class="boxOne">
+				<span class="icon">
+					789
+				</span>
+				<a href="#" class="clickBtn"> 
+					<span class="line-top"></span>
+					<span class="line-right"></span>
+					<span class="line-bottom"></span>
+					<span class="line-left"></span>
+					MISSION3
+				</a>
+			</div>
+		</div>
+	</body>
+</html>
